@@ -1,0 +1,94 @@
+// components/site-header.tsx
+import React from "react";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+
+const SiteHeader = () => {
+  const { t } = useTranslation();
+
+  return (
+    <header className="bg-neutral-800">
+      <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300">
+        <Link href="#about" className="hover:text-white transition-colors">
+          {t("nav.about")}
+        </Link>
+        <Link href="#jobs" className="hover:text-white transition-colors">
+          {t("nav.jobs")}
+        </Link>
+      </nav>
+      {/* rest of code here */}
+    </header>
+  );
+};
+
+export default SiteHeader;
+
+// components/hero.tsx
+import React from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+
+const Hero = () => {
+  const { t } = useTranslation();
+
+  return (
+    <section className="bg-neutral-900 text-white">
+      <div className="container mx-auto px-4 sm:px-6 py-16 md:py-24">
+        {/* social icons here */}
+        <div className="flex flex-wrap items-center gap-3 pt-2">
+          <Button
+            asChild
+            variant="outline"
+            className="border-neutral-800 bg-neutral-900 text-neutral-200 hover:bg-neutral-800"
+          >
+            <Link href="#about">{t("nav.about")}</Link>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            className="border-neutral-800 bg-neutral-900 text-neutral-200 hover:bg-neutral-800"
+          >
+            <Link href="#jobs">{t("nav.jobs")}</Link>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
+
+// components/what-is.tsx
+import React from "react";
+
+const WhatIs = () => {
+  return (
+    <section id="about" className="container mx-auto px-4 sm:px-6 py-8 md:py-16">
+      {/* content here */}
+    </section>
+  );
+};
+
+export default WhatIs;
+
+// app/page.tsx
+import React from "react";
+import { FeatureCards } from "@/components/feature-cards";
+import { WhatIsSection } from "@/components/what-is";
+import { JobsSection } from "@/components/jobs";
+
+const Page = () => {
+  return (
+    <main>
+      <FeatureCards />
+      <section className="container mx-auto px-4 sm:px-6 py-8 md:py-12">
+        <JobsSection />
+      </section>
+      <WhatIsSection />
+      {/* rest of code here */}
+    </main>
+  );
+};
+
+export default Page;
